@@ -1,0 +1,17 @@
+h1 Add a USER
+form(method="POST" action="/users")
+	p <b>BibId:
+		input#bibid(type="string" name="bibid")
+	p Full Name:
+		input#fname(type="text" name="fname")
+	p Location:
+		input#location(type="text" name="location")
+	p Event:
+		input#event(type="text" name="event")
+	p Age:
+		input#age(type="string" name="age")
+	p Gender:
+		input#gender(type="text" name="gender")
+		
+
+	p: button(type="submit") Add User
