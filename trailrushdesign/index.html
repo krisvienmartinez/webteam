@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Scrolling Nav - Start Bootstrap Template</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/scrolling-nav.css" rel="stylesheet">
+        <style>
+            #about h1 {
+                font-size: 40px;
+                font-weight: 800;
+            }
+            .jumbotron{
+                margin-top: 200px;
+                margin-bottom: 200px;
+                background-color: transparent;
+            }       
+            #services{
+                padding-top: 170px;
+                padding-bottom: 170px;
+                height:auto;
+                background-color: white; 
+                 background-image:url(img/asphalt_texture3728.jpg); 
+                 background-size: cover;
+
+              
+            }
+            #services img{
+                height: auto;
+            }
+            #services .col-xs-2{
+                padding-right: 3px;
+                padding-top: 37px;
+                text-align: center;
+               
+            }
+            #services .col-xs-9{
+                 border-left:2px solid #969696;
+            }
+            #services a{
+                color: #ff7d13;
+            }
+            #services h3{
+                text-align: left;
+            }
+            #services h1{
+                color:#eee;
+                text-align: center;
+                font-weight: 800;
+
+            }
+            #services p{
+              color:#eee;
+              text-align: left;
+            }
+            #services .row{
+                margin-bottom: 25px;
+            }
+            hr.style-eight {
+                padding: 0;
+                border: none;
+                border-top: medium double #333;
+                color: #333;
+                text-align: center;
+                width:50%;
+            }
+            hr.style-eight:after {
+                content: "§";
+                display: inline-block;
+                position: relative; 
+                top: -0.7em;  
+                font-size: 1.5em;
+                padding: 0 0.25em;
+                background: white;
+            }
+            #events {
+                height:auto;
+                padding-top: 60px;
+                background-color: #f7f7f7;
+            }
+            #events h1{
+                text-align: center;
+                font-weight: 800;
+                padding-bottom: 30px;
+                padding-top: 50px;
+            }
+            #events h3,p{
+                text-align: center;
+            }
+
+            .btn-default{
+                text-align: center;
+            }
+            #events .col-md-4{
+            margin-bottom: 130px;
+          
+            }
+
+            #events .col-md-4 a{
+                color:#181818;
+                font-weight: 700;
+             }
+
+            #events .col-md-4 p{
+                padding-left: 50px;
+                padding-right: 50px;
+                padding-bottom: 20px;
+            }
+            #thumbnail-preview-indicators {
+                position: relative;
+                overflow: hidden;
+            }
+            #thumbnail-preview-indicators  h1{
+                margin-top: 50px;
+            }
+            #thumbnail-preview-indicators .slides .slide-1, 
+            #thumbnail-preview-indicators .slides .slide-2,
+            #thumbnail-preview-indicators .slides .slide-3 {
+                background-size: cover;
+                background-position: center center;
+                background-repeat: no-repeat;
+            }
+            #thumbnail-preview-indicators,
+            #thumbnail-preview-indicators .slides,
+            #thumbnail-preview-indicators .slides .slide-1, 
+            #thumbnail-preview-indicators .slides .slide-2,
+            #thumbnail-preview-indicators .slides .slide-3 {
+                 height: 720px;
+            }
+            #thumbnail-preview-indicators .slides .slide-1 {
+                background-image: url(img/mountain-wallpapers26.jpg); 
+            }
+            #thumbnail-preview-indicators .slides .slide-2 {
+                background-image: url(img/Beautiful-Road-Wallpaper-HD-103.jpg);
+            }
+            #thumbnail-preview-indicators .slides .slide-3 {
+                background-image: url(img/phoneoriginal.jpg);
+            }
+            #thumbnail-preview-indicators .carousel-inner .item .carousel-caption {
+                top: 20%;
+                bottom: inherit;
+            }
+            #thumbnail-preview-indicators .carousel-indicators li,
+            #thumbnail-preview-indicators .carousel-indicators li.active {
+                position: relative;
+                width: 100px;
+                height: 8px;  
+            }
+            #thumbnail-preview-indicators .carousel-indicators li > .thumbnail {
+                position: absolute;
+                top: 0;
+                width: 100px;
+                display: none;
+                opacity: 0;
+                left: 50%;
+                margin-top: -80px;
+                margin-left: -50px;
+            }
+            #thumbnail-preview-indicators .carousel-indicators li:hover > .thumbnail,
+            #thumbnail-preview-indicators .carousel-indicators li.active > .thumbnail {
+                display: block;
+                opacity: .8;
+            }
+            #thumbnail-preview-indicators .carousel-indicators li.active > .thumbnail:hover{
+                opacity: 1;
+            }
+           
+            
+            .caret-up {
+                width: 0; 
+                height: 0; 
+                border-left: 4px solid rgba(0, 0, 0, 0);
+                border-right: 4px solid rgba(0, 0, 0, 0);
+                border-bottom: 4px solid;
+                
+                display: inline-block;
+                margin-left: 2px;
+                vertical-align: middle;
+            }
+            .modal-header{
+                padding-top: 0px;
+                padding-bottom: 0px;
+            }
+            .mask {
+                position:relative;
+                height:auto;
+                width:auto;
+                box-shadow:0 0 1px #000;
+               
+                overflow:hidden;
+            }
+            .btn{
+                margin-bottom: 120px;
+            }
+
+
+            .caption {  
+                background-color: rgba(255,125,19,0.9);  
+                position: absolute;  
+                color: #fff;  
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                padding: 4px 20px 4px 15px; 
+                font-size:0.8em;
+                opacity: 0;
+                -webkit-transition: all 300ms ease-out;  
+                -moz-transition: all 300ms ease-out;  
+                -o-transition: all 300ms ease-out;  
+                -ms-transition: all 300ms ease-out;  
+                 transition: all 300ms ease-out;   
+            }  
+
+            .mask:hover .caption {  
+                    opacity: 1;  
+                }
+            .caption img{
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-top:30%;
+                }
+            #whitebox{
+                background-color: white;
+            }
+            .carousel-caption{
+                margin-top: 90px; 
+            }
+            #contacts{
+                background-image:url(img/03-dark-grey_03.jpg); 
+                background-size: cover;
+                color:white;
+            }
+            #contacts h1{
+                margin-top: 130px;
+                font-weight: 800;
+                text-align: center;
+                padding-bottom: 40px;
+            }
+            #contacts #name{
+                padding-top: 30px;
+                padding-bottom: 30px;
+            }
+            #contacts #email{
+                padding-top: 30px;
+                padding-bottom: 30px;
+            }
+            #contacts #phone{
+                padding-top: 30px;
+                padding-bottom: 30px;
+            }
+            #contacts input{
+                margin-bottom: 25px;
+            }
+            #contacts .btn {
+                margin-top: 50px;
+                height:60px;
+                width: 200px;
+                background-color:#ff7d13;
+                font-weight: 800;
+            }
+           #download img{
+                margin-top: 150px;
+                margin-bottom: 170px;
+        }
+
+            @media screen and (max-width : 480px) {    
+                #thumbnail-preview-indicators .carousel-indicators li,
+                #thumbnail-preview-indicators .carousel-indicators li.active {
+                    width: 50px;
+                    height: 8px;
+                    position: relative;
+                }
+                #thumbnail-preview-indicators .carousel-indicators li > .thumbnail {
+                    width: 50px;
+                    left: 50%;
+                    margin-top: -50px;
+                    margin-left: -25px;
+                }
+                #services p{
+                    font-size: 14px;
+                }
+            }
+        </style>
+    </head>
+    <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+    <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top " role="navigation">
+            <div class="container">
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand page-scroll" href="#page-top">Trail Rush</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse navbar-ex1-collapse navHeaderCollapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                        <li class="hidden">
+                            <a class="page-scroll" href="#page-top"></a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="#about">About</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="#services">Services</a>
+                        </li>
+                         <li class="dropdown">
+                            <a href="#events" class=" page-scroll dropdown-toggle" data-toggle="dropdown">Events<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="eventpage.htm">Upcoming Events</a></li>
+                                <li><a href="#">Current Events</a></li>
+                                <li><a href="#">Past Events</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="#download">Download</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="#contacts">Contact</a>
+                        </li>
+                </div>
+                
+            </div>
+        </nav>
+        
+        <div id="thumbnail-preview-indicators" class="carousel slide" data-ride="carousel">
+              <!-- Indicators -->
+                <div class="carousel-inner">
+                <div class="item slides active">
+                  <div class="slide-1"></div>
+                  <div class="container">
+                    <div class="carousel-caption">
+                      <h1>New carousel layout</h1>
+                      <p>Responsive thumbnail preview in carousel indicators.</p>
+                      <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="item slides">
+                  <div class="slide-2"></div>
+                  <div class="container">
+                    <div class="carousel-caption">
+                      <h1>Another example headline.</h1>
+                      <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+                      <p><a class="btn btn-lg btn-primary page-scroll" href="#about" role="button">Learn more</a></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="item slides">
+                  <div class="slide-3"></div>
+                  <div class="container">
+                    <div class="carousel-caption">
+                      <h1>One more for good measure.</h1>
+                      <p>Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                      <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <a class="left carousel-control" href="#thumbnail-preview-indicators" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+              <a class="right carousel-control" href="#thumbnail-preview-indicators" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+        </div> 
+        
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="jumbotron">
+                    <div class="text-center">
+                        <h1>About</h1>
+                        <hr class="style-eight"></hr>
+                    </div>
+                    <p class="text-muted">Aliquam convallis, ipsum eget condimentum volutpat, leo orci malesuada purus, tempus imperdiet turpis leo et dui. Praesent pellentesque arcu id mauris iaculis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.</p>
+                </div>
+            </div>
+        </section> 
+        
+        <section id="services" class="services-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1>Services</h1>
+                    </div>  
+                </div>
+                <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-xs-2">
+                                    <img src="img/settings48.png" class="img-responsive center-block ">
+                                </div>
+
+                                <div class="col-xs-9">
+                                    <h3><a href="#">Lorem Ipsum</a></h3>
+                                    <p>Dictas philosophia nec ne. His esse justo epicurei ne, cu noster dictas efficiantur sea, sea tantas invidunt constituam ut. Ad alii sententiae duo.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-xs-2">
+                                    <img src="img/magnifier11.png" class="img-responsive center-block">
+                                </div>
+                                <div class="col-xs-9">
+                                    <h3><a href="#">Lorem Ipsum</a></h3>
+                                    <p>Dictas philosophia nec ne. His esse justo epicurei ne, cu noster dictas efficiantur sea, sea tantas invidunt constituam ut. Ad alii sententiae duo.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-xs-2">
+                                    <img src="img/people.png" class="img-responsive center-block">
+                                </div>
+                                <div class="col-xs-9">
+                                    <h3><a href="#">Lorem Ipsum</a></h3>
+                                    <p>Dictas philosophia nec ne. His esse justo epicurei ne, cu noster dictas efficiantur sea, sea tantas invidunt constituam ut. Ad alii sententiae duo.</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-xs-2">
+                                    <img src="img/responsive16.png" class="img-responsive center-block">
+                                </div>
+                                <div class="col-xs-9">
+                                    <h3><a href="#">Lorem Ipsum</a></h3>
+                                    <p>Dictas philosophia nec ne. His esse justo epicurei ne, cu noster dictas efficiantur sea, sea tantas invidunt constituam ut. Ad alii sententiae duo.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </section>
+        
+        <section id="events" class="events-section">
+            <div class="container">
+                <h1>Events</h1>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div id="whitebox"> 
+                        <div class="mask">
+                            <img src="img/tower1.jpg" class="img-responsive">
+                            <a href="eventpost.htm" class="caption">
+                                <img src="img/plus24.png" height=50px width=50px></img>
+                            </a>  
+                           
+                        </div>
+                          
+                            <h3><a href="#">Lorem Ipsum</a></h3>
+                            <p class = "text-muted">Dictas philosophia nec ne. His esse justo epicurei ne, cu noster dictas efficiantur sea, sea tantas invidunt constituam ut.</p>
+                            
+                        </div>
+                    </div>
+                   <div class="col-md-4">
+                        <div id="whitebox">
+                        <div class="mask">
+                            <img src="img/sunset1.jpg" class="img-responsive">
+                                <div class="caption">  
+                                <img src="img/plus24.png" height=50px width=50px></img>  
+                            </div>
+                        </div> 
+                        <h3><a href="#">Lorem Ipsum</a></h3>
+                            <p class = "text-muted">Dictas philosophia nec ne. His esse justo epicurei ne, cu noster dictas efficiantur sea, sea tantas invidunt constituam ut.</p>
+                            
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div id="whitebox">
+                        <div class="mask">
+                            <img src="img/vintage_bike.jpg" class="img-responsive">
+                            <div class="caption">  
+                                <img src="img/plus24.png" height=50px width=50px></img>
+                            </div>
+                        </div>
+                        <h3><a href="#">Lorem Ipsum</a></h3>
+                        <p class = "text-muted">Dictas philosophia nec ne. His esse justo epicurei ne, cu noster dictas efficiantur sea, sea tantas invidunt constituam ut.</p>
+                       
+                        </div> 
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        
+        <div id="download" class="download-section">
+            <div class="container">
+               
+                    <center><img src="img/samsung4.png" height=500 width=300></img></center>
+             
+
+            </div>
+        </div>
+
+        <div id="contacts" class="contacts-section">
+            <div class="container">
+              <h1>Contact Us</h1>
+              <div class="col-lg-12">
+                <form name="sentMessage" id="contactForm" novalidate>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Your Name *" id="name" required data-validation-required-message="Please enter your name.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="Your Email *" id="email" required data-validation-required-message="Please enter your email address.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" class="form-control" placeholder="Your Phone *" id="phone" required data-validation-required-message="Please enter your phone number.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <textarea class="form-control" placeholder="Your Message *" id="message" required data-validation-required-message="Please enter a message." rows="11"></textarea>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="col-lg-12 text-center">
+                                <div id="success"></div>
+                                <button type="submit" class="btn btn-xl">Send Message</button>
+                            </div>
+                        </div>
+                </form>
+              </div>
+        
+            </div>
+        </div>
+        
+        <!-- jQuery -->
+        <script src="js/jquery.js"></script>
+        <script src="js/scrollingproject.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="js/bootstrap.min.js"></script>
+
+        <!-- Scrolling Nav JavaScript -->
+        <script src="js/jquery.easing.min.js"></script>
+        <script src="js/scrolling-nav.js"></script>
+    </body>
+</html>
