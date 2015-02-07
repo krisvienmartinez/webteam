@@ -6,6 +6,8 @@
 var express = require('express')
 var routes = require('./routes');
   var mongoose = require('mongoose');
+  var http = require('http');
+var fs = require('fs');
 
 var app = module.exports = express.createServer();
 
@@ -62,10 +64,36 @@ app.post('/users',function(req,res){
 	});
 });
 
-//show
-app.get('/users/:fname', function (req, res) {
-	res.render("users/show", { user: req.user });
+//searching to
+app.post("/users/bibid", function(req,res){
+ user.find({"bibid":req.body.searchbibid}, function (err, docs){
+ res.render('users/search', {users: docs});
+ });
 });
+
+//shows the entry
+app.get('/users/:bibid', function (req, res){
+	res.render('users/show', { user: req.user});
+});
+
+
+//html
+app.get('/search', function(req, res) {
+fs.readFile('./search.html', function(error, content) {
+if (error) {
+ res.writeHead(500);
+ res.end();
+ }
+ else {
+ res.writeHead(200, { 'Content-Type': 'text/html' });
+ res.end(content, 'utf-8');
+ }
+ });
+});
+
+// Routes
+
+app.get('/', routes.index);
 
 
 app.listen(3000);
