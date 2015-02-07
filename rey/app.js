@@ -65,14 +65,14 @@ app.post('/users',function(req,res){
 });
 
 //searching to
-app.post("/users/bibid", function(req,res){
+app.post("/users/search", function(req,res){
  user.find({"bibid":req.body.searchbibid}, function (err, docs){
  res.render('users/search', {users: docs});
  });
 });
 
 //shows the entry
-app.get('/users/:bibid', function (req, res){
+app.get('/search/:bibid', function (req, res){
 	res.render('users/show', { user: req.user});
 });
 
