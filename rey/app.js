@@ -73,7 +73,7 @@ app.param('bibid', function (req, res, next, name) {
 
 //search
 app.post("/search", function(req,res){
- user.find({"bibid":req.body.searchbibid}, function (err, docs){
+ Users.find({"bibid":req.body.bibid}, function (err, docs){
  res.render("users/searchshow", {users: docs});
  });
 });
