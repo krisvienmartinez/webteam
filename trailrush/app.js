@@ -11,7 +11,7 @@ var path = require('path');
 var fs = require('fs');
 var mongoose=require('./lib/db');
 var Runner=require('./lib/runner.js');
-var mong =require('mongoose')
+var mong =require('mongoose');
 
 //
 var autoIncrement = require('mongoose-auto-increment');
