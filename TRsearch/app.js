@@ -53,7 +53,7 @@ app.param('EventName', function(req, res, next, EventName){
 	});
 
 //show all events
-app.get("/Events", function(req,res){
+app.get("/", function(req,res){
  MyEvents.find({}, function (err, docs){
  res.render('users/events', {users: docs});
  });
@@ -63,6 +63,7 @@ app.get("/Events", function(req,res){
 app.get('/Events/:EventName', function (req, res){
 	res.render('users/show', { MyEvent: req.MyEvent});
 });
+
 
 /*app.get('/', routes.index);
 app.get('/users', user.list);*/
@@ -86,6 +87,12 @@ if (error) {
 //searching
 app.post("/SearchEvent", function(req,res){
  MyEvents.find({'EventName':req.body.SearchEvent}, function (err, docs){
+ res.render('users/search', {users: docs});
+ });
+});
+
+app.get("/Event", function(req,res){
+ MyEvents.find({'EventName':req.body.Milo}, function (err, docs){
  res.render('users/search', {users: docs});
  });
 });

@@ -8,7 +8,8 @@ h1 List of Events
 
 ul
 each event in users
-	|<a href="/SearchEvent">
-	li #{event.EventName}
+	|<a href="/Event">
+	|<li name="#{event.EventName}"> #{event.EventName}
+	|</li>
 	|</a>
 	|<br>
