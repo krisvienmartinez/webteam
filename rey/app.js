@@ -29,37 +29,44 @@ app.configure('production', function(){
 });
 //mongoose
 
-mongoose.connect('mongodb://taxi:taxi1@ds031641.mongolab.com:31641/mydatabase');
+mongoose.connect('mongodb://admin:admin@ds041831.mongolab.com:41831/trailrush');
 var Schema = new mongoose.Schema({
-		bibid: a.bibid,
-		fname: a.fname,
-		location: a.location,
-		event: a.event,
-		age: a.age,
-		gender: a.gender
+		bibid: Number,
+		fname: String,
+		location: String,
+		event: String,
+		age: Number,
+		gender: String
 }),
-	user = mongoose.model('emp', Schema);
+	Users = mongoose.model('participants', Schema);
 
-app.post('/users',function(req,res){
-	var a = req.body;
-	new user({
-		bibid: a.bibid,
-		fname: a.fname,
-		location: a.location,
-		event: a.event,
-		age: a.age,
-		gender: a.gender
-
-	}).save(function (err, user){
-		if(err) res.json(err);
-		res.redirect('/users/' + user.platenumber);
+	app.get("/users", function (req, res) {
+	Users.find({}, function (err, docs) {
+		res.render('users/new', { users : docs});
 	});
 });
 
+app.post('/users',function(req,res){
+	var a = req.body;
+	new Users({
+		bibid: a.bibid,
+		fname: a.fname,
+		location: a.location,
+		event: a.event,
+		age: a.age,
+		gender: a.gender
 
-// Routes
+	}).save(function (err, users){
+		if(err) res.json(err);
+		res.redirect('/users/' + users.fname);
+	});
+});
 
-app.get('/', routes.index);
+//show
+app.get('/users/:fname', function (req, res) {
+	res.render("users/show", { user: req.user });
+});
+
 
 app.listen(3000);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
