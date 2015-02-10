@@ -91,8 +91,8 @@ app.post("/SearchEvent", function(req,res){
  });
 });
 
-app.get("/Event", function(req,res){
- MyEvents.find({'EventName':req.body.Milo}, function (err, docs){
+app.get("/Event/:id", function(req,res){
+ MyEvents.find({'EventName':req.params.id}, function (err, docs){
  res.render('users/search', {users: docs});
  });
 });
