@@ -5,9 +5,11 @@
 
 var express = require('express')
 var routes = require('./routes');
-  var mongoose = require('mongoose');
+  var mong = require('mongoose');
   var http = require('http');
 var fs = require('fs');
+var Runner=require('./lib/participant.js');
+var mongoose=require('./lib/db');
 
 var app = module.exports = express.createServer();
 
@@ -31,16 +33,24 @@ app.configure('production', function(){
 });
 //mongoose
 
-mongoose.connect('mongodb://admin:admin@ds041831.mongolab.com:41831/trailrush');
+//
+var autoIncrement = require('mongoose-auto-increment');
+var connection = mong.createConnection('mongodb://admin:admin@ds041831.mongolab.com:41831/trailrush');
+autoIncrement.initialize(connection);
 var Schema = new mongoose.Schema({
-		bibid: Number,
-		fname: String,
+		fullname: String,
 		location: String,
 		event: String,
-		age: Number,
+		age: String,
 		gender: String
-}),
-	Users = mongoose.model('participants', Schema);
+});
+	Schema.plugin(autoIncrement.plugin, {
+    model: 'participants',
+    field: 'bibid',
+    startAt: 1000,
+    incrementBy: 1
+});
+var Users = mongoose.mongoose.model('participants', Schema);
 
 	app.get("/users", function (req, res) {
 	Users.find({}, function (err, docs) {
@@ -52,7 +62,7 @@ app.post('/users',function(req,res){
 	var a = req.body;
 	new Users({
 		bibid: a.bibid,
-		fname: a.fname,
+		fullname: a.fullname,
 		location: a.location,
 		event: a.event,
 		age: a.age,
@@ -95,7 +105,6 @@ if (error) {
  }
  });
 });
-
 
 // Routes
 

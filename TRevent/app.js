@@ -64,7 +64,7 @@ res.end(content, 'utf-8');
 app.post('/NewEvent', function(req, res) {
 var _id = req.body.EventName;
 var EventName = req.body.EventName;
-var EventDate = req.body.EventDate;
+var EventDate = req.body.EventDate; 
 var EventPlace = req.body.EventPlace;
 var Eventorganizer = req.body.EventOrganizer;
 var EventDescription = req.body.EventDescription;
