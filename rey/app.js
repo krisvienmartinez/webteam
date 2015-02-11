@@ -50,18 +50,17 @@ var Schema = new mongoose.Schema({
     startAt: 1000,
     incrementBy: 1
 });
-var Users = mongoose.mongoose.model('participants', Schema);
+var participants = mongoose.mongoose.model('participants', Schema);
 
 	app.get("/users", function (req, res) {
-	Users.find({}, function (err, docs) {
+	participants.find({}, function (err, docs) {
 		res.render('users/new', { users : docs});
 	});
 });
 
 app.post('/users',function(req,res){
 	var a = req.body;
-	new Users({
-		bibid: a.bibid,
+	new participants({
 		fullname: a.fullname,
 		location: a.location,
 		event: a.event,
@@ -70,12 +69,15 @@ app.post('/users',function(req,res){
 
 	}).save(function (err, users){
 		if(err) res.json(err);
-		res.send("Successfully added a new User")
+		participants.find({"fullname": req.body.fullname},function(err,docs){
+		res.render('users/show', {users: docs});
+		console.log(docs);
 	});
+});
 });
 
 app.param('bibid', function (req, res, next, name) {
-	Users.find({ bibid: bibid }, function (err, docs ) {
+	participants.find({ bibid: bibid }, function (err, docs ) {
 		req.users = docs[0];
 		next();
 	});
@@ -83,7 +85,7 @@ app.param('bibid', function (req, res, next, name) {
 
 //search
 app.post("/search", function(req,res){
- Users.find({"bibid":req.body.bibid}, function (err, docs){
+ participants.find({"bibid":req.body.bibid}, function (err, docs){
  res.render("users/searchshow", {users: docs});
  });
 });
