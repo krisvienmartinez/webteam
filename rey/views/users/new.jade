@@ -5,7 +5,9 @@ form(method="POST" action="/users")
 	p Location:
 		input#location(type="text" name="location")
 	p Event:
-		input#event(type="text" name="event")
+		select(name="event")
+			each event in users
+				|<option value=#{event.EventName}>#{event.EventName}</option>
 	p Age:
 		input#age(type="string" name="age")
 	p Gender:

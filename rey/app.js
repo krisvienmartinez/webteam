@@ -52,8 +52,20 @@ var Schema = new mongoose.Schema({
 });
 var participants = mongoose.mongoose.model('participants', Schema);
 
-	app.get("/users", function (req, res) {
-	participants.find({}, function (err, docs) {
+var EventSchema = new mongoose.Schema({
+	 _id: String
+	,EventName: String
+	,EventDate: String
+	,EventPlace: String
+	,EventOrganizer: String
+	,eventDescription: String
+
+});
+
+var MyEvents=mongoose.mongoose.model('MyEvents', EventSchema);
+
+app.get("/users", function (req, res) {
+	MyEvents.find({}, function (err, docs) {
 		res.render('users/new', { users : docs});
 	});
 });
@@ -71,7 +83,6 @@ app.post('/users',function(req,res){
 		if(err) res.json(err);
 		participants.find({"fullname": req.body.fullname},function(err,docs){
 		res.render('users/show', {users: docs});
-		console.log(docs);
 	});
 });
 });
