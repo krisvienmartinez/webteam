@@ -6,7 +6,7 @@ var userListData = [];
 
 
 // DOM Ready =============================================================
-jQuery(document).ready(function() {
+$(document).ready(function() {
 
     // Populate the user table on initial page load
     populateTable();
@@ -92,6 +92,7 @@ function showUserInfo(event) {
 
     //Populate Info Box
     $('#userInfoName').val(thisUserObject.fullname);
+    $('#userInfoEvent').val(thisUserObject.event);
     $('#userInfoAge').val(thisUserObject.age);
     $('#userInfoGender').val(thisUserObject.gender);
     $('#userInfoLocation').val(thisUserObject.location);
@@ -106,7 +107,8 @@ function showUserInfo(event) {
   
     var name = document.getElementById('userInfoName').value;
     var bimp = document.getElementById('userInfoAge').value;
-    document.getElementById('qrcode').value="Name: "+name+"\nBimp ID: "+bimp;
+    var TRevent= document.getElementById('userInfoEvent').value;
+    document.getElementById('qrcode').value='{"Name":"'+name+'","Bib":"'+bimp+'","event":"'+TRevent+'"}';
 
     // alert(document.getElementById('qrvalue').value);
     var elText = document.getElementById('qrcode');
@@ -232,6 +234,7 @@ function searchUser(event) {
 
     //Populate Info Box
     $('#userInfoName').val(thisUserObject.fullname);
+
     $('#userInfoAge').val(thisUserObject.age);
     $('#userInfoGender').val(thisUserObject.gender);
     $('#userInfoLocation').val(thisUserObject.location);
@@ -249,7 +252,9 @@ function searchUser(event) {
 
     var name = document.getElementById('userInfoName').value;
     var bimp = document.getElementById('userInfoAge').value;
-    document.getElementById('qrcode').value="Name: "+name+"\nBib ID: "+bimp;
+    var TRevent= document.getElementById('userInfoEvent').value;
+
+    document.getElementById('qrcode').value='{"Name":"'+name+'","Bib":"'+bimp+'","event":"'+TRevent+'"}';
 
 
     // alert(document.getElementById('qrvalue').value);
@@ -274,7 +279,9 @@ function makeCode () {
 
     var name = document.getElementById('userInfoName').value;
     var bimp = document.getElementById('userInfoAge').value;
-    document.getElementById('qrcode').value="Name: "+name+"\nBib ID: "+bimp;
+    var TRevent= document.getElementById('userInfoEvent').value;
+    document.getElementById('qrcode').value='{"Name":"'+name+'","Bib":"'+bimp+'","event":"'+TRevent+'"}';
+
 
 
     var elText = document.getElementById('qrcode');
