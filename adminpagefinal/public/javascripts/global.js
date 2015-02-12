@@ -2,9 +2,6 @@
 var userListData = [];
 
 
-
-
-
 // DOM Ready =============================================================
 $(document).ready(function() {
 
@@ -111,8 +108,7 @@ function showUserInfo(event) {
     var name = document.getElementById('userInfoName').value;
     var bimp = document.getElementById('userInfoAge').value;
     var TRevent= document.getElementById('userInfoEvent').value;
-    document.getElementById('qrcode').value='{"Name":"'+name+'","Bib":"'+bimp+'","event":"'+TRevent+'"}';
-
+    document.getElementById('qrcode').value='{"Runners":\n[{"Name":"'+name+'","Bib":"'+bimp+'","Event":"'+TRevent+'"}]}'
     // alert(document.getElementById('qrvalue').value);
     var elText = document.getElementById('qrcode');
     qrcode.makeCode(elText.value);
@@ -233,7 +229,7 @@ function searchUser(event) {
     var searchvariable = $('input#inputSearchName').val();
     console.log(searchvariable);
     // Get Index of object based on id value
-    var arrayPosition = userListData.map(function(arrayItem) { return arrayItem.bibid; }).indexOf(searchvariable);
+    var arrayPosition = userListData.map(function(arrayItem) { return arrayItem.bibid +''; }).indexOf(searchvariable);
     // Get our User Object
     var thisUserObject = userListData[arrayPosition];
 

@@ -2,6 +2,17 @@ var express = require('express');
 var router = express.Router();
 
 
+
+/*
+ * GET stats.
+ */
+router.get('/stats', function(req, res) {
+    var db = req.db;
+    db.collection('stats').find().toArray(function (err, items) {
+        res.json(items);
+    });
+});
+
 /*
  * GET userlist.
  */
@@ -11,6 +22,8 @@ router.get('/userlist', function(req, res) {
         res.json(items);
     });
 });
+
+
 
 /*
  * POST to adduser.
