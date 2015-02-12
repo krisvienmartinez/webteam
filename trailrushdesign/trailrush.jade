@@ -52,9 +52,19 @@ html(lang='en')
                   input#signup-name.form-control(type='text', placeholder='Full Name')
                 br
               .form-group
-                label.col-lg-2.control-label(for='signup-name') Age:
+                label.col-lg-2.control-label(for='signup-email') Email:
+                .col-lg-10
+                  input#signup-email.form-control(type='email', placeholder='Email')
+                br
+              .form-group
+                label.col-lg-2.control-label(for='signup-number') Contact:
+                .col-lg-5
+                  input#signup-number.form-control(type='number', placeholder='Number')
+                br
+              .form-group
+                label.col-lg-2.control-label(for='signup-age') Age:
                 .col-lg-2
-                  input#signup-name.form-control(type='number', placeholder='Age')
+                  input#signup-age.form-control(type='number', placeholder='Age')
                 br
               .form-group
                 label.col-lg-2.control-label(for='signup-gender') Gender:
@@ -62,6 +72,11 @@ html(lang='en')
                   select#signup-gender.form-control(placeholder='Gender')
                     option Male
                     option Female
+              .form-group
+                label.col-lg-2.control-label(for='signup-address') Address:
+                .col-lg-10
+                  input#signup-address.form-control(type='text', placeholder='Address')
+                br
               .form-group
                 label.col-lg-2.control-label(for='signup-event') Event:
                 .col-lg-10
