@@ -91,11 +91,14 @@ function showUserInfo(event) {
     var thisUserObject = userListData[arrayPosition];
 
     //Populate Info Box
+    $('#userInfoBibID').val(thisUserObject.bibid);
     $('#userInfoName').val(thisUserObject.fullname);
     $('#userInfoEvent').val(thisUserObject.event);
-    $('#userInfoAge').val(thisUserObject.age);
+    $('#userInfoEmail').val(thisUserObject.emailaddress);
+    $('#userInfoContactNum').val(thisUserObject.contactnumber);
     $('#userInfoGender').val(thisUserObject.gender);
-    $('#userInfoLocation').val(thisUserObject.location);
+    $('#userInfoAge').val(thisUserObject.age);
+    $('#userInfoAddress').val(thisUserObject.address);
 
     //Generate QR
     clearQR();
@@ -136,9 +139,11 @@ function addUser(event,name,age, callback) {
         var newUser = {
             'bibid': $('#addUser fieldset input#inputUserBibID').val(),
             'event': $('#addUser fieldset input#inputUserEvent').val(),
+            'emailaddress': $('#addUser fieldset input#inputUserEmail').val(),
+            'contactnumber': $('#addUser fieldset input#inputUserContactNum').val(),
             'fullname': $('#addUser fieldset input#inputUserFullname').val(),
             'age': $('#addUser fieldset input#inputUserAge').val(),
-            'location': $('#addUser fieldset input#inputUserLocation').val(),
+            'address': $('#addUser fieldset input#inputUseraddress').val(),
             'gender': $('#addUser fieldset input#inputUserGender').val()
         }
         console.log(newUser);
@@ -233,11 +238,14 @@ function searchUser(event) {
     var thisUserObject = userListData[arrayPosition];
 
     //Populate Info Box
+    $('#userInfoBibID').val(thisUserObject.bibid);
     $('#userInfoName').val(thisUserObject.fullname);
-
-    $('#userInfoAge').val(thisUserObject.age);
+    $('#userInfoEvent').val(thisUserObject.event);
+    $('#userInfoEmail').val(thisUserObject.emailaddress);
+    $('#userInfoContactNum').val(thisUserObject.contactnumber);
     $('#userInfoGender').val(thisUserObject.gender);
-    $('#userInfoLocation').val(thisUserObject.location);
+    $('#userInfoAge').val(thisUserObject.age);
+    $('#userInfoAddress').val(thisUserObject.address);
 
 
 
@@ -324,7 +332,9 @@ function changeUserInfo(event) {
   $('#updateUserEvent').val(thisUserObject.event);
   $('#updateUserFullname').val(thisUserObject.fullname);
   $('#updateUserAge').val(thisUserObject.age);
-  $('#updateUserLocation').val(thisUserObject.location);
+  $('#updateUserEmail').val(thisUserObject.emailaddress);
+  $('#updateUserContactNum').val(thisUserObject.contactnumber);
+  $('#updateUserAddress').val(thisUserObject.address);
   $('#updateUserGender').val(thisUserObject.gender);
 
 

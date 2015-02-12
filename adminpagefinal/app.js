@@ -75,34 +75,7 @@ var server = app.listen(3000, function () {
   var host = server.address().address
   var port = server.address().port
 
-  console.log('Example app listening at http://%s:%s', host, port)
+  console.log('Trail Rush at http://%s:%s', host, port)
 
 })
-
-
-
-//update an employee
-app.get('/employee/:id/edit', function(req, res) {
-    employeeProvider.findById(req.param('_id'), function(error, employee) {
-        res.render('employee_edit',
-        { 
-            title: employee.title,
-            employee: employee
-        });
-    });
-});
-
-//save updated employee
-app.post('/employee/:id/edit', function(req, res) {
-    employeeProvider.update(req.param('_id'),{
-        title: req.param('title'),
-        name: req.param('name')
-    }, function(error, docs) {
-        res.redirect('/')
-    });
-});
-
-
-
-
 module.exports = app;
