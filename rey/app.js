@@ -39,10 +39,12 @@ var connection = mong.createConnection('mongodb://admin:admin@ds041831.mongolab.
 autoIncrement.initialize(connection);
 var Schema = new mongoose.Schema({
 		fullname: String,
-		location: String,
+		address: String,
 		event: String,
 		age: String,
-		gender: String
+		gender: String,
+		emailaddress: String,
+		contactnumber: String
 });
 	Schema.plugin(autoIncrement.plugin, {
     model: 'participants',
@@ -74,10 +76,12 @@ app.post('/users',function(req,res){
 	var a = req.body;
 	new participants({
 		fullname: a.fullname,
-		location: a.location,
+		address: a.address,
 		event: a.event,
 		age: a.age,
-		gender: a.gender
+		gender: a.gender,
+		emailaddress: a.emailaddress,
+		contactnumber: a.contactnumber,
 
 	}).save(function (err, users){
 		if(err) res.json(err);
