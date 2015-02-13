@@ -6,7 +6,7 @@ var EventSchema = new db.Schema({
 	,EventDate: String
 	,EventPlace: String
 	,EventOrganizer: String
-	,eventDescription: String
+	,EventDescription: String
 
 });
 
