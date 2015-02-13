@@ -3,13 +3,13 @@
  * Module dependencies.
  */
 
-var express = require('express'),
-	mongoose = require('mongoose');
+var express = require('express');
 var routes = require('./routes');
 var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
-var fs = require('fs');
+var fs=require('fs');
+var mongoose=require('mongoose');
 
 var app = express();
 
@@ -25,7 +25,12 @@ app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
-//LAGYAN NG MONGOOSE.CONNECT
+// development only
+if ('development' == app.get('env')) {
+  app.use(express.errorHandler());
+}
+
+//dbase
 mongoose.connect('mongodb://admin:admin@ds041831.mongolab.com:41831/trailrush');
 
 var EventSchema = new mongoose.Schema({
@@ -50,7 +55,6 @@ app.param('EventName', function(req, res, next, EventName){
 //show all events
 app.get("/", function(req,res){
  MyEvents.find({}, function (err, docs){
- 	console.log(docs);
  res.render('users/events', {users: docs});
  });
 });
@@ -59,29 +63,12 @@ app.get("/", function(req,res){
 app.post('/Events/:EventName', function (req, res){
 	res.render('users/search', { MyEvent: req.MyEvent});
 });
-// development only
-if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
-}
 
-app.get('/', routes.index);
-app.get('/users', user.list);
 
-//WEBSITE DESIGN
-app.get("/home",function(req,res){
-	/*res.render("users/trailrush"),{ MyEvent: req.MyEvent});*/
- MyEvents.find({}, function (err, docs){
- 	console.log(docs);
- res.render("users/trailrush", {trailevents: docs});
- });
-});
-
-app.get("/Event/:id", function(req,res){
- MyEvents.find({'EventName':req.params.id}, function (err, docs){
- res.render('users/search', {trailevents: docs});
- });
-});
+/*app.get('/', routes.index);
+app.get('/users', user.list);*/
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
+

@@ -1,0 +1,12 @@
+h3 Search Result:
+
+ul
+each event in users
+	li #{event.EventName}
+	li #{event.EventDate}
+	li #{event.EventOrganizer}
+	
+	|	<br>
+	a(href="/") Search Again
+	|	<br>
+	a(href="/") Go to the list of plate numbers
