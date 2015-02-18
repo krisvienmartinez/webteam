@@ -1,20 +1,20 @@
 h1 Registration
 form(method="POST" action="/users")
 	p Full Name:
-		input#fullname(type="text" name="fullname")
+		input#FName(type="text" name="FName")
 	p Address:
-		input#address(type="text" name="address")
+		input#Address(type="text" name="Address")
 	p Event:
-		select(name="event")
+		select(name="EventName")
 			each event in users
 				|<option value=#{event.EventName}>#{event.EventName}</option>
 	p Age:
-		input#age(type="string" name="age")
+		input#Age(type="string" name="Age")
 	p Gender:
-		input#gender(type="text" name="gender")
+		input#Gender(type="text" name="Gender")
 	p Email:
-		input#emailaddress(type="text" name="emailaddress")
+		input#EmailAddress(type="text" name="EmailAddress")
 	p Contact Number:
-		input#contactnumber(type="text" name="contactnumber")		
+		input#ContactNumber(type="text" name="ContactNumber")		
 
 	p: button(type="submit") Add User
